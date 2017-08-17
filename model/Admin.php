@@ -169,7 +169,7 @@ class Admin extends BaseModel
     }
 
     public function themeData() {
-        $question = $this->questionlist(false);
+        $question = $this->questionList(false);
         $theme = $this->themelist();
         $themeDataMass = [];
         foreach ($theme as $thelem ) {

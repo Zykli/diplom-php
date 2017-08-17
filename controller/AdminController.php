@@ -103,7 +103,6 @@ class AdminController extends Base
         if ($params[0] == 'noAnswer' && $params[1] == 'edit') {
             $editQuestion = 'display: block';
             $questionForEdit = $this->model->questionForEdit($params[2]);
-            echo $questionForEdit[0][1];
         }
         if ($params[0] == 'list') {
             $themeQuestions = 'display: block';

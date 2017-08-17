@@ -28,7 +28,7 @@ class BaseModel
             );
     	} else {
     		$statement = $this->db->prepare(
-            'SELECT * FROM category'
+            'SELECT * FROM question'
             );
     	}
         if ($statement->execute()) {
