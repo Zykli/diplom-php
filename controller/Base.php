@@ -1,6 +1,13 @@
 <?php
 class Base
 {
+    public $model;
+
+    function __construct($model)
+    {
+        $this->model = $model;
+    }
+
     public function render($template, $params = [])
     {
         require __DIR__.'/../vendor/autoload.php';

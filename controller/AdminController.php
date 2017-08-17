@@ -3,13 +3,6 @@ include 'Base.php';
 
 class AdminController extends Base
 {
-    private $model;
-
-    function __construct($model)
-    {
-        $this->model = $model;
-    }
-
     function checkSession()
     {
         if (empty($_SESSION['user'])) {
@@ -86,7 +79,7 @@ class AdminController extends Base
     {
         $this->checkSession();
 
-        $questionList = $this->model->questionlist();
+        $questionList = $this->model->questionList(false);
         $insert = 'display: none';
         $noAnswerQuestionsView = 'display: none';
         $editQuestion = 'display: none';
@@ -149,7 +142,7 @@ class AdminController extends Base
             'noAnswerQuestionsView' => $noAnswerQuestionsView,
             'editQuestion' => $editQuestion,
             'themeQuestions' => $themeQuestions,
-            'themeMass' => $this->model->themelist(),
+            'themeMass' => $this->model->themeList(),
             'themeDataMass' => $this->model->themeData(),
             'questionWhithNullAnswer' => $questionList,
             'editQuestionData' => $questionForEdit[0],

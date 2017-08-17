@@ -1,14 +1,8 @@
 <?php
+include 'BaseModel.php';
 
-class Admin
+class Admin extends BaseModel
 {
-    private $db;
-
-    function __construct($db)
-    {
-        $this->db = $db;
-    }
-
     function auth($params)
     {
         $statement = $this->db->prepare(
@@ -82,29 +76,6 @@ class Admin
     {
         $statement = $this->db->prepare(
             'SELECT * FROM usersdiplom'
-        );
-        if ($statement->execute()) {
-            return $statement->fetchAll();
-        }
-        return false;
-    }
-
-
-    public function themelist()
-    {	
-        $statement = $this->db->prepare(
-            'SELECT * FROM category'
-        );
-        if ($statement->execute()) {
-			return $statement->fetchAll();
-        }
-        return false;
-    }
-
-    public function questionlist()
-    {
-        $statement = $this->db->prepare(
-            'SELECT * FROM question'
         );
         if ($statement->execute()) {
             return $statement->fetchAll();
@@ -198,7 +169,7 @@ class Admin
     }
 
     public function themeData() {
-        $question = $this->questionlist();
+        $question = $this->questionlist(false);
         $theme = $this->themelist();
         $themeDataMass = [];
         foreach ($theme as $thelem ) {

@@ -1,14 +1,8 @@
 <?php
+include 'BaseModel.php';
 
-class User
+class User extends BaseModel
 {
-    private $db;
-
-    function __construct($db)
-    {
-        $this->db = $db;
-    }
-
     function add($params)
     {
         $createDate = date("Y-m-d H:m:s");
@@ -21,27 +15,6 @@ class User
         $sth->bindValue(':create_date', $createDate);
 
         return $sth->execute();
-    }
-
-    public function findAllQuesions()
-    {
-        $sth = $this->db->prepare(
-        	'SELECT * FROM question WHERE status = 1'
-        );
-        if ($sth->execute()) {
-            return $sth->fetchAll();
-        }
-        return false;
-    }
-    public function findAllTheme()
-    {
-        $sth = $this->db->prepare(
-        	'SELECT * FROM category'
-        );
-        if ($sth->execute()) {
-            return $sth->fetchAll();
-        }
-        return false;
     }
 }
 

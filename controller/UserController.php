@@ -3,16 +3,9 @@ include 'Base.php';
 
 class UserController extends Base
 {
-    private $model;
-
-    function __construct($model)
-    {
-        $this->model = $model;
-    }
-
     function getAdd()
     {
-        $theme = $this->model->findAllTheme();
+        $theme = $this->model->themeList();
         $params = array(
             'themeMass' => $theme
         );
@@ -36,8 +29,8 @@ class UserController extends Base
 
     public function getList()
     {
-        $questions = $this->model->findAllQuesions();
-        $theme = $this->model->findAllTheme();
+        $questions = $this->model->questionList(thrue);
+        $theme = $this->model->themeList();
         $notNullTheme = [];
         foreach ($questions as $question) {
             if(!(in_array($question["category_id"], $notNullTheme))) {
