@@ -1,0 +1,22 @@
+CREATE TABLE `usersdiplom` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`user` VARCHAR(50) NOT NULL,
+	`password` VARCHAR(5s0) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+CREATE TABLE `question` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`wording` VARCHAR(500) NOT NULL,
+	`answer` VARCHAR(500),
+	`author` VARCHAR(50) NOT NULL,
+	`category_id` INT(11) NOT NULL,
+	`status` SMALLINT NOT NULL,
+	PRIMARY KEY (`id`)
+)
+CREATE TABLE `category` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
