@@ -32,15 +32,20 @@ class UserController extends Base
         $questions = $this->model->questionList(thrue);
         $theme = $this->model->themeList();
         $notNullTheme = [];
-        foreach ($questions as $question) {
-            if(!(in_array($question["category_id"], $notNullTheme))) {
-                array_push($notNullTheme, $question["category_id"]);
+        if(!empty($questions)) {
+            foreach ($questions as $question) {
+                if(!(in_array($question["category_id"], $notNullTheme))) {
+                    array_push($notNullTheme, $question["category_id"]);
+                }
             }
         }
         $themeMassForView = [];
+
+        if(!empty($theme)) {
         foreach ($theme as $elem) {
-			if (in_array($elem['id'], $notNullTheme)) {
-                array_push($themeMassForView, $elem);
+			      if (in_array($elem['id'], $notNullTheme)) {
+                    array_push($themeMassForView, $elem);
+                }
             }
         }
 
@@ -53,4 +58,3 @@ class UserController extends Base
     }
 
 }
-
